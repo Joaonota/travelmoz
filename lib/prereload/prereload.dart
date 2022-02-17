@@ -25,9 +25,16 @@ class _PrereloadState extends State<Prereload> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "assets/logo/logos.png",
+                "assets/logo/logo.png",
                 width: 300,
               ),
+              const Text(
+                "TRAVEL MOZ",
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Color(0xff336b87),
+                    fontWeight: FontWeight.bold),
+              )
             ],
           ),
         ),

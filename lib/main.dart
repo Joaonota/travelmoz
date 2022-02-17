@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelmoz/prereload/prereload.dart';
+import 'package:travelmoz/view/Menu/homePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Prereload(),
+      home: HomePage(),
     );
   }
 }
