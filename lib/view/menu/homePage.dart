@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelmoz/custimizado/cityBox.dart';
 import 'package:travelmoz/teste/teste.dart';
 
 import '../../custimizado/appbarcustimi.dart';
@@ -11,11 +12,11 @@ class HomePage extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 252, 247, 247),
         appBar: const CustomAppBar(
           title: Text(
-            "ESCOLHA  ZONA DO PAIS",
+            "ESCOLHA UMA ZONA DO PAIS",
             style: TextStyle(
                 color: Colors.black,
                 fontFamily: 'Helvetica Neue',
-                fontSize: 20,
+                fontSize: 17,
                 fontWeight: FontWeight.bold),
           ),
         ),
@@ -51,12 +52,9 @@ class HomePage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: icnnn.data.length,
                       itemBuilder: (context, cidadeInx) {
-                        return Container(
-                          width: 130,
-                          height: 130,
-                          color: Colors.yellow,
-                          margin: EdgeInsets.only(left: 10, right: 10),
-                          child: Text(cidades[cidadeInx]['nome']),
+                        return CityBox(
+                          datas: cidades[cidadeInx],
+                          onTap: () {},
                         );
                       },
                     ))
@@ -66,3 +64,11 @@ class HomePage extends StatelessWidget {
         ));
   }
 }
+
+/*Container(
+                          width: 130,
+                          height: 130,
+                          color: Colors.yellow,
+                          margin: EdgeInsets.only(left: 10, right: 10),
+                          child: Text(cidades[cidadeInx]['nome']),
+                        );*/
