@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "477209847678",
+    "project_id": "travelmoz-3a7d5",
+    "storage_bucket": "travelmoz-3a7d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477209847678:android:3354a6d20e941baedd752f",
+        "android_client_info": {
+          "package_name": "com.example.travelmoz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "477209847678-g7ngc7enjj85uk6nfo03cp97tnfqlo96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDco8tqQE4au3KI0ezeEKT7WoENzbWs0mM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "477209847678-g7ngc7enjj85uk6nfo03cp97tnfqlo96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
