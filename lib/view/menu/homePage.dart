@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelmoz/custimizado/cityBox.dart';
 import 'package:travelmoz/teste/teste.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,6 +19,15 @@ class HomePage extends StatelessWidget {
         ),
       ),
       drawer: const Drawer(),
+      body: ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        itemCount: 15,
+        itemExtent: 350,
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        itemBuilder: (context, index) {
+          return CityBox();
+        },
+      ),
     );
   }
 }
