@@ -1,67 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:travelmoz/custimizado/cityBox.dart';
 import 'package:travelmoz/teste/teste.dart';
-
-import '../../custimizado/appbarcustimi.dart';
 
 class HomePage extends StatelessWidget {
   Testezonha icnnn = Testezonha();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 252, 247, 247),
+      appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: const Color.fromARGB(255, 252, 247, 247),
-        appBar: const CustomAppBar(
-          title: Text(
-            "ESCOLHA UMA ZONA DO PAIS",
-            style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Helvetica Neue',
-                fontSize: 17,
-                fontWeight: FontWeight.bold),
-          ),
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          "Feed",
+          style: TextStyle(color: Colors.black),
         ),
-        drawer: Drawer(),
-        body: ListView.builder(
-          itemCount: icnnn.data.length,
-          itemBuilder: (context, index) {
-            var cidades = [];
-            for (var city in icnnn.data[index]['provincias']) {
-              cidades.addAll(city['cidade']);
-            }
-            return Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "${icnnn.data[index]['nome']} (${icnnn.data[index]['provincias'].length})",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text("Ver Cidade"),
-                    ),
-                  ],
-                ),
-                Container(
-                    height: 130,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: icnnn.data.length,
-                      itemBuilder: (context, cidadeInx) {
-                        return CityBox(
-                          datas: cidades[cidadeInx],
-                          onTap: () {},
-                        );
-                      },
-                    ))
-              ],
-            );
-          },
-        ));
+      ),
+      drawer: const Drawer(),
+    );
   }
 }
 
