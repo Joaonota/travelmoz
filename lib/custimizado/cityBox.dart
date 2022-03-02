@@ -21,6 +21,7 @@ class CityBox extends StatelessWidget {
                 const ColorFilter.mode(Colors.black26, BlendMode.darken)),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
@@ -44,8 +45,24 @@ class CityBox extends StatelessWidget {
                   ),
                 ],
               ),
+              const Spacer(),
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.more_horiz,
+                    color: Colors.white,
+                  ))
             ],
           ),
+          const Spacer(),
+          const Text(
+            "Cidade de Tete",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+            ),
+          ),
+          const Spacer(),
         ],
       ),
     );
