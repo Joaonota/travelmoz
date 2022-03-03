@@ -2,24 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:travelmoz/custimizado/cityBox.dart';
 import 'package:travelmoz/teste/teste.dart';
 
-class HomePage extends StatelessWidget {
+// ignore: must_be_immutable
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   Testezonha icnnn = Testezonha();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 252, 247, 247),
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: const Color.fromARGB(255, 252, 247, 247),
-        elevation: 0,
-        centerTitle: true,
-        title: const Text(
-          "Feed",
-          style: TextStyle(color: Colors.black),
+        appBar: AppBar(
+          iconTheme: const IconThemeData(color: Colors.black),
+          backgroundColor: const Color.fromARGB(255, 252, 247, 247),
+          elevation: 0,
+          centerTitle: true,
+          title: const Text(
+            "Feed",
+            style: TextStyle(color: Colors.black),
+          ),
         ),
-      ),
-      drawer: const Drawer(),
-      body: ListView.builder(
+        drawer: const Drawer(),
+        body: const CityBox());
+  }
+}
+
+/*
+body: ListView.builder(
         physics: const BouncingScrollPhysics(),
         itemCount: 15,
         itemExtent: 350,
@@ -31,8 +43,14 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+physics: const BouncingScrollPhysics(),
+        itemCount: 15,
+        itemExtent: 350,
+        padding: EdgeInsets.symmetric(horizontal: 20),
 
-/*Container(
+
+
+Container(
                           width: 130,
                           height: 130,
                           color: Colors.yellow,

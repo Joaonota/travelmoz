@@ -1,12 +1,62 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:travelmoz/models/moz.dart';
 
-class CityBox extends StatelessWidget {
-  // ignore: use_key_in_widget_constructors
-  const CityBox();
+import '../fireBase/firestores.dart';
+
+class CityBox extends StatefulWidget {
+  const CityBox({Key? key}) : super(key: key);
 
   @override
+  State<CityBox> createState() => _CityBoxState();
+}
+
+class _CityBoxState extends State<CityBox> {
+  Firestore firestore = Firestore();
+  @override
   Widget build(BuildContext context) {
-    return Container(
+    return StreamBuilder<QuerySnapshot>(
+      stream: firestore.moz.snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return const Center(
+            child: Text("Errro Ao Carregar Dados"),
+          );
+        }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        if (!snapshot.hasData) {
+          return const Center(
+            child: Text("SEM DADOS"),
+          );
+        }
+
+        return ListView.builder(
+            itemCount: 1,
+            itemBuilder: (context, index) {
+              List<DocumentSnapshot> mozs = snapshot.data!.docs.toList();
+              DocumentSnapshot documentSnapshot = mozs[index];
+              Moz moz = Moz.fromDocumentSnapShot(documentSnapshot);
+              return Container(
+                child: Text("${moz.cidade}"),
+              );
+            });
+      },
+    );
+  }
+}
+
+
+
+
+
+
+
+/*
+return Container(
       margin: const EdgeInsets.only(bottom: 20),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -40,7 +90,7 @@ class CityBox extends StatelessWidget {
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "Presidente do Municipio",
+                    "skjskjd",
                     style: TextStyle(color: Colors.white70, fontSize: 12),
                   ),
                 ],
@@ -68,3 +118,4 @@ class CityBox extends StatelessWidget {
     );
   }
 }
+*/
