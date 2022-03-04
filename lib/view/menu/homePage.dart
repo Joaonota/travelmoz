@@ -4,6 +4,8 @@ import 'package:travelmoz/teste/teste.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   State<HomePage> createState() => _HomePageState();
 }

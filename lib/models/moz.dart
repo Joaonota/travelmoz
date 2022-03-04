@@ -12,6 +12,8 @@ class Moz {
   Moz();
 
   Moz.fromDocumentSnapShot(DocumentSnapshot documentSnapshot) {
-    this.cidade = documentSnapshot['cidade'];
+    cidade = documentSnapshot['cidade'];
+    fotoPM = documentSnapshot['fotoPM'];
+    presidenteM = documentSnapshot['presidenteM'];
   }
 }
