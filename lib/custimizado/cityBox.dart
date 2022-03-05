@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/models/moz.dart';
 
 import '../fireBase/firestores.dart';
@@ -52,9 +53,12 @@ class _CityBoxState extends State<CityBox> {
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(12),
                   image: DecorationImage(
-                    image: CachedNetworkImageProvider(
+                    image: NetworkImage(
                       moz.fotos![0],
                     ),
+                    fit: BoxFit.cover,
+                    colorFilter: const ColorFilter.mode(
+                        Colors.black26, BlendMode.darken),
                   ),
                 ),
                 child: Column(
@@ -68,6 +72,9 @@ class _CityBoxState extends State<CityBox> {
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
+                                    title: Text(
+                                        "Actual Presidente do Municipio:${moz.presidenteM}",
+                                        style: GoogleFonts.laila()),
                                     actions: [
                                       Container(
                                         margin:
@@ -78,9 +85,10 @@ class _CityBoxState extends State<CityBox> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                           image: DecorationImage(
-                                            image: CachedNetworkImageProvider(
+                                            image: NetworkImage(
                                               "${moz.fotoPM}",
                                             ),
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       )
