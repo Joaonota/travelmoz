@@ -15,5 +15,6 @@ class Moz {
     cidade = documentSnapshot['cidade'];
     fotoPM = documentSnapshot['fotoPM'];
     presidenteM = documentSnapshot['presidenteM'];
+    fotos = List<String>.from(documentSnapshot['fotos']);
   }
 }
