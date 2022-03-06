@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/models/moz.dart';
+import 'package:travelmoz/view/detalhes/detalhes.dart';
 
 import '../fireBase/firestores.dart';
 
@@ -138,7 +140,41 @@ class _CityBoxState extends State<CityBox> {
                         fontSize: 25,
                       ),
                     ),
+                    const SizedBox(height: 10),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 147, 206, 255),
+                          borderRadius: BorderRadius.circular(12)),
+                      child: TextButton(
+                        style: const ButtonStyle(),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder: (_, animation, __) => FadeTransition(
+                                opacity: animation,
+                                child: Detalhes(moz: moz),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Mais Detalhes",
+                          style: GoogleFonts.abrilFatface(
+                              color: const Color.fromARGB(255, 27, 27, 27)),
+                        ),
+                      ),
+                    ),
                     const Spacer(),
+                    Container(
+                      child: TextButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(
+                            CupertinoIcons.heart,
+                            color: Colors.red,
+                          ),
+                          label: const Text("0")),
+                    )
                   ],
                 ),
               );
