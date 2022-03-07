@@ -19,7 +19,11 @@ class Detalhes extends StatelessWidget {
                 maxExtent: MediaQuery.of(context).size.height,
                 minExtent: 240,
                 builder: (percent) {
-                  return DetalheAnimacao(mozs: moz);
+                  return DetalheAnimacao(
+                    topPercet: ((1 - percent) / .7).clamp(0.0, 1.0),
+                    bootmPercet: (percent / .3).clamp(0.0, 1.0),
+                    mozs: moz,
+                  );
                 }),
           ),
           const SliverToBoxAdapter(child: Placeholder()),
