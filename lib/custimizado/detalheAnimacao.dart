@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:travelmoz/custimizado/pageviewIamge.dart';
 import 'package:travelmoz/models/moz.dart';
 
 class DetalheAnimacao extends StatelessWidget {
@@ -22,57 +24,77 @@ class DetalheAnimacao extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
+        ClipRRect(
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: (20 + topPadind) * (1 - bootmPercet),
+              bottom: 160 * (1 - bootmPercet),
+            ),
+            child: Transform.scale(
+              scale: lerpDouble(1, 1.3, bootmPercet)!,
+              child: PageViewIamge(imageurl: imageurl),
+            ),
+          ),
+        ),
         Positioned.fill(
-          top: (20 + topPadind) * (1 - bootmPercet),
-          bottom: 160 * (1 - bootmPercet),
-          child: Transform.scale(
-            scale: lerpDouble(1, 1.3, bootmPercet),
-            child: Column(
+          top: null,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            height: 140,
+            decoration: BoxDecoration(
+              color: Colors.blue.shade50,
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(30),
+              ),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: PageView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    controller: PageController(viewportFraction: .9),
-                    itemCount: imageurl?.length, //iamgeurl.legth
-                    itemBuilder: (context, index) {
-                      final imagesUrl = imageurl![index];
-                      return Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                            image: NetworkImage(imagesUrl),
-                            fit: BoxFit.cover,
-                            colorFilter: const ColorFilter.mode(
-                                Colors.black26, BlendMode.darken),
-                          ),
-                        ),
-                      );
-                    },
+                TextButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(
+                    CupertinoIcons.heart,
+                    color: Colors.red,
                   ),
+                  label: const Text("0"),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    imageurl!.length, //imageurl.letg
-                    (index) => Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 3),
-                      color: Colors.black,
-                      height: 3,
-                      width: 10,
-                    ),
+                TextButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(
+                    CupertinoIcons.reply,
+                    color: Colors.green,
                   ),
+                  label: const Text("10K"),
                 ),
-                const SizedBox(
-                  height: 10,
+                const Spacer(),
+                TextButton.icon(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.blue.shade100,
+                      primary: Colors.blue.shade600,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                  icon: const Icon(
+                    Icons.check_circle_outline,
+                  ),
+                  label: const Text("verficado"),
                 ),
               ],
             ),
           ),
         ),
+        Positioned.fill(
+          top: null,
+          child: Container(
+            height: 70,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(30),
+              ),
+            ),
+          ),
+        )
       ],
     );
   }
