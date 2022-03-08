@@ -3,15 +3,38 @@ import 'package:travelmoz/custimizado/buildPersist.dart';
 import 'package:travelmoz/custimizado/detalheAnimacao.dart';
 import 'package:travelmoz/models/moz.dart';
 
-class Detalhes extends StatelessWidget {
-  const Detalhes({Key? key, required this.moz}) : super(key: key);
+class Detalhes extends StatefulWidget {
+  const Detalhes({Key? key, required this.moz, required this.screnHeigh})
+      : super(key: key);
   final Moz moz;
+  final double screnHeigh;
+
+  @override
+  State<Detalhes> createState() => _DetalhesState();
+}
+
+class _DetalhesState extends State<Detalhes> {
+  late ScrollController _controller;
+  @override
+  void initState() {
+    // TODO: implement initState
+    _controller = ScrollController(initialScrollOffset: widget.screnHeigh * .3);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
+        controller: _controller,
         slivers: [
           SliverPersistentHeader(
             pinned: true,
@@ -22,7 +45,7 @@ class Detalhes extends StatelessWidget {
                   return DetalheAnimacao(
                     topPercet: ((1 - percent) / .7).clamp(0.0, 1.0),
                     bootmPercet: (percent / .3).clamp(0.0, 1.0),
-                    mozs: moz,
+                    mozs: widget.moz,
                   );
                 }),
           ),

@@ -168,7 +168,11 @@ class _CityBoxState extends State<CityBox> {
                             PageRouteBuilder(
                               pageBuilder: (_, animation, __) => FadeTransition(
                                 opacity: animation,
-                                child: Detalhes(moz: moz),
+                                child: Detalhes(
+                                  moz: moz,
+                                  screnHeigh:
+                                      MediaQuery.of(context).size.height,
+                                ),
                               ),
                             ),
                           );
