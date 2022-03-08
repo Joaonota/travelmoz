@@ -74,9 +74,23 @@ class _CityBoxState extends State<CityBox> {
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
-                                    title: Text(
-                                        "Actual Presidente do Municipio:${moz.presidenteM}",
-                                        style: GoogleFonts.laila()),
+                                    title: Column(
+                                      children: [
+                                        Text(
+                                          "Act. Presidente do Municipio",
+                                          style:
+                                              GoogleFonts.laila(fontSize: 15),
+                                          textAlign: TextAlign.start,
+                                        ),
+                                        Text(
+                                          "${moz.presidenteM}",
+                                          style: GoogleFonts.averiaGruesaLibre(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold),
+                                          textAlign: TextAlign.start,
+                                        ),
+                                      ],
+                                    ),
                                     actions: [
                                       Container(
                                         margin:
@@ -166,15 +180,13 @@ class _CityBoxState extends State<CityBox> {
                       ),
                     ),
                     const Spacer(),
-                    Container(
-                      child: TextButton.icon(
-                          onPressed: () {},
-                          icon: const Icon(
-                            CupertinoIcons.heart,
-                            color: Colors.red,
-                          ),
-                          label: const Text("0")),
-                    )
+                    TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(
+                          CupertinoIcons.heart,
+                          color: Colors.red,
+                        ),
+                        label: const Text("0"))
                   ],
                 ),
               );
