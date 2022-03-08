@@ -115,7 +115,6 @@ class DetalheAnimacao extends StatelessWidget {
         )
       ],
     );
-    ;
   }
 }
 

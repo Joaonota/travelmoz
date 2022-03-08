@@ -14,6 +14,7 @@ class Moz {
   Moz.fromDocumentSnapShot(DocumentSnapshot documentSnapshot) {
     cidade = documentSnapshot['cidade'];
     fotoPM = documentSnapshot['fotoPM'];
+    descricao = documentSnapshot['descricao'];
     presidenteM = documentSnapshot['presidenteM'];
     fotos = List<String>.from(documentSnapshot['fotos']);
   }

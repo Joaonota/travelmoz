@@ -49,9 +49,32 @@ class _DetalhesState extends State<Detalhes> {
                   );
                 }),
           ),
-          const SliverToBoxAdapter(child: Placeholder()),
-          const SliverToBoxAdapter(child: Placeholder()),
-          const SliverToBoxAdapter(child: Placeholder()),
+          SliverToBoxAdapter(
+              child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.location_on,
+                      color: Colors.black26,
+                    ),
+                    Flexible(
+                      child: Text(
+                        "${widget.moz.cidade}",
+                        style: const TextStyle(color: Colors.blue),
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text("${widget.moz.descricao}")
+              ],
+            ),
+          )),
         ],
       ),
     );
