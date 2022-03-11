@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/custimizado/buildPersist.dart';
 import 'package:travelmoz/custimizado/detalheAnimacao.dart';
 import 'package:travelmoz/models/moz.dart';
 
 class Detalhes extends StatefulWidget {
-  const Detalhes({Key? key, required this.moz, required this.screnHeigh})
+  const Detalhes(
+      {Key? key, required this.moz, required this.screnHeigh, this.imageurl})
       : super(key: key);
   final Moz moz;
   final double screnHeigh;
+  final List<String>? imageurl;
 
   @override
   State<Detalhes> createState() => _DetalhesState();
@@ -15,6 +18,7 @@ class Detalhes extends StatefulWidget {
 
 class _DetalhesState extends State<Detalhes> {
   late ScrollController _controller;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -50,31 +54,69 @@ class _DetalhesState extends State<Detalhes> {
                 }),
           ),
           SliverToBoxAdapter(
-              child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.location_on,
-                      color: Colors.black26,
-                    ),
-                    Flexible(
-                      child: Text(
-                        "${widget.moz.cidade}",
-                        style: const TextStyle(color: Colors.blue),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.location_on,
+                        color: Colors.black26,
                       ),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text("${widget.moz.descricao}")
-              ],
+                      Flexible(
+                        child: Text(
+                          "${widget.moz.cidade}",
+                          style: const TextStyle(color: Colors.blue),
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "${widget.moz.descricao}",
+                    style: GoogleFonts.actor(),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "Lugares de Lazer",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
             ),
-          )),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 180,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  itemExtent: 150,
+                  itemCount: widget.moz.fotos?.length,
+                  itemBuilder: (context, index) {
+                    final lugares = widget.moz.fotos?[index];
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          lugares!,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+          ),
         ],
       ),
     );
