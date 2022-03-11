@@ -50,10 +50,7 @@ class DetalheUser extends StatelessWidget {
           const Spacer(),
           IconButton(
             onPressed: () {},
-            icon: const Icon(
-              Icons.more_horiz,
-              color: Colors.white,
-            ),
+            icon: const Icon(Icons.more_horiz, color: Colors.black),
           )
         ],
       ),

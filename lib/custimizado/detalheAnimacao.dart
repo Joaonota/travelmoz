@@ -77,15 +77,15 @@ class DetalheAnimacao extends StatelessWidget {
                 TextButton.icon(
                   onPressed: () {},
                   icon: const Icon(
-                    CupertinoIcons.heart,
+                    CupertinoIcons.heart_circle,
                     color: Colors.red,
                   ),
-                  label: const Text("0"),
+                  label: Text("${mozs.likes!.length}"),
                 ),
                 TextButton.icon(
                   onPressed: () {},
                   icon: const Icon(
-                    CupertinoIcons.reply,
+                    CupertinoIcons.reply_all,
                     color: Colors.green,
                   ),
                   label: const Text("10K"),

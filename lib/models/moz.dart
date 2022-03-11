@@ -8,7 +8,7 @@ class Moz {
   List<String>? distritos;
   List<String>? fotos;
   List<String>? linguas;
-  Map? lugares;
+  List<String>? likes;
 
   Moz();
 
@@ -17,8 +17,8 @@ class Moz {
     fotoPM = documentSnapshot['fotoPM'];
     descricao = documentSnapshot['descricao'];
     presidenteM = documentSnapshot['presidenteM'];
-    //lugares = Map<String, String>.from(documentSnapshot['lugares']);
     fotos = List<String>.from(documentSnapshot['fotos']);
+    likes = List<String>.from(documentSnapshot['likes']);
     linguas = List<String>.from(documentSnapshot['linguas']);
   }
 }

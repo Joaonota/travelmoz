@@ -66,10 +66,8 @@ class _DetalhesState extends State<Detalhes> {
                         color: Colors.black26,
                       ),
                       Flexible(
-                        child: Text(
-                          "${widget.moz.cidade}",
-                          style: const TextStyle(color: Colors.blue),
-                        ),
+                        child: Text("${widget.moz.cidade}",
+                            style: GoogleFonts.allertaStencil()),
                       )
                     ],
                   ),
@@ -83,18 +81,55 @@ class _DetalhesState extends State<Detalhes> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Text(
-                    "Lugares de Lazer",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                          decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 147, 206, 255),
+                              borderRadius: BorderRadius.circular(12)),
+                          child: TextButton.icon(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.hotel_outlined,
+                                color: Colors.black,
+                              ),
+                              label: Row(
+                                children: [
+                                  Text(
+                                    "Hotel (${widget.moz.fotos?.length})",
+                                    style: const TextStyle(color: Colors.black),
+                                  ),
+                                  const Icon(Icons.arrow_forward),
+                                ],
+                              ))),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 147, 206, 255),
+                            borderRadius: BorderRadius.circular(12)),
+                        child: TextButton(
+                          autofocus: true,
+                          onPressed: () {},
+                          child: Text(
+                            "Lugares de Laser (${widget.moz.fotos?.length})",
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),
             ),
           ),
-          SliverToBoxAdapter(
+        ],
+      ),
+    );
+  }
+}
+
+
+ /*SliverToBoxAdapter(
             child: SizedBox(
               height: 180,
               child: ListView.builder(
@@ -116,9 +151,4 @@ class _DetalhesState extends State<Detalhes> {
                     );
                   }),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+          ),*/

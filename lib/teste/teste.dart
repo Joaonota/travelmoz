@@ -4,12 +4,12 @@ class Testezonha {
   late Moz moz;
   int index = 0;
 
-  teste() {
+  /*teste() {
     var lugare = [];
     for (var lugares in moz.lugares![index]['lugares']) {
       lugare.addAll(lugares["dados"]);
     }
-  }
+  }*/
 
   List data = [
     {
