@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/custimizado/buildPersist.dart';
 import 'package:travelmoz/custimizado/detalheAnimacao.dart';
@@ -36,6 +37,16 @@ class _DetalhesState extends State<Detalhes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.abc_sharp),
+          label: "hotel",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(FontAwesomeIcons.hotel),
+          label: "hotel",
+        ),
+      ]),
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         controller: _controller,
