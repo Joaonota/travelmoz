@@ -4,6 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/custimizado/buildPersist.dart';
 import 'package:travelmoz/custimizado/detalheAnimacao.dart';
 import 'package:travelmoz/models/moz.dart';
+import 'package:travelmoz/view/detalhes/lista_hotel.dart';
+
+import 'lista_Laser.dart';
 
 class Detalhes extends StatefulWidget {
   const Detalhes(
@@ -19,80 +22,121 @@ class Detalhes extends StatefulWidget {
 
 class _DetalhesState extends State<Detalhes> {
   late ScrollController _controller;
+  late PageController pc;
+  int conrentInt = 1;
 
   @override
   void initState() {
-    // TODO: implement initState
     _controller = ScrollController(initialScrollOffset: widget.screnHeigh * .3);
+    pc = PageController(initialPage: conrentInt);
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
+
     _controller.dispose();
+  }
+
+  onchanged(pagina) {
+    setState(() {
+      conrentInt = pagina;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.abc_sharp),
-          label: "hotel",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(FontAwesomeIcons.hotel),
-          label: "hotel",
-        ),
-      ]),
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        controller: _controller,
-        slivers: [
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: BuldPesisTets(
-                maxExtent: MediaQuery.of(context).size.height,
-                minExtent: 240,
-                builder: (percent) {
-                  return DetalheAnimacao(
-                    topPercet: ((1 - percent) / .7).clamp(0.0, 1.0),
-                    bootmPercet: (percent / .3).clamp(0.0, 1.0),
-                    mozs: widget.moz,
-                  );
-                }),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (pag) {
+          pc.animateToPage(pag,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.bounceOut);
+        },
+        currentIndex: conrentInt,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.lastfmSquare),
+            label: "CAFÈ",
           ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+          BottomNavigationBarItem(
+            icon: Icon(Icons.location_on_outlined),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.hotel),
+            label: "HOTEL",
+          ),
+        ],
+      ),
+      body: PageView(
+        controller: pc,
+        onPageChanged: onchanged,
+        children: [
+          const ListaLaser(),
+          CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            controller: _controller,
+            slivers: [
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: BuldPesisTets(
+                    maxExtent: MediaQuery.of(context).size.height,
+                    minExtent: 240,
+                    builder: (percent) {
+                      return DetalheAnimacao(
+                        topPercet: ((1 - percent) / .7).clamp(0.0, 1.0),
+                        bootmPercet: (percent / .3).clamp(0.0, 1.0),
+                        mozs: widget.moz,
+                      );
+                    }),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(
-                        Icons.location_on,
-                        color: Colors.black26,
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.location_on,
+                            color: Colors.black26,
+                          ),
+                          Flexible(
+                            child: Text("${widget.moz.cidade}",
+                                style: GoogleFonts.allertaStencil()),
+                          )
+                        ],
                       ),
-                      Flexible(
-                        child: Text("${widget.moz.cidade}",
-                            style: GoogleFonts.allertaStencil()),
-                      )
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "${widget.moz.descricao}",
+                        style: GoogleFonts.actor(),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "${widget.moz.descricao}",
-                    style: GoogleFonts.actor(),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
+                ),
+              ),
+            ],
+          ),
+          const Listahotel()
+        ],
+      ),
+    );
+  }
+}
+
+
+/*
+ Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
@@ -129,16 +173,11 @@ class _DetalhesState extends State<Detalhes> {
                       ),
                     ],
                   )
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
+
+
+
+*/
 
  /*SliverToBoxAdapter(
             child: SizedBox(
