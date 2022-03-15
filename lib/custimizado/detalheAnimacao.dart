@@ -35,7 +35,7 @@ class DetalheAnimacao extends StatelessWidget {
                 ),
                 child: Transform.scale(
                   scale: lerpDouble(1, 1.3, bootmPercet)!,
-                  child: PageViewIamge(imageurl: imageurl),
+                  child: PageViewIamge(imageurl: imageurl!),
                 ),
               ),
               Positioned(

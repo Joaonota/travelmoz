@@ -127,7 +127,9 @@ class _DetalhesState extends State<Detalhes> {
               ),
             ],
           ),
-          const Listahotel()
+          Listahotel(
+            moz: widget.moz,
+          )
         ],
       ),
     );

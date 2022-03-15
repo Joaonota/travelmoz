@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:travelmoz/models/moz.dart';
 
 import '../../custimizado/hotelBox.dart';
 
+// ignore: must_be_immutable
 class Listahotel extends StatelessWidget {
-  const Listahotel({Key? key}) : super(key: key);
-
+  Listahotel({Key? key, required this.moz}) : super(key: key);
+  Moz moz;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +20,9 @@ class Listahotel extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 252, 247, 247),
       ),
-      body: const HotelBox(),
+      body: HotelBox(
+        moz: moz,
+      ),
     );
   }
 }

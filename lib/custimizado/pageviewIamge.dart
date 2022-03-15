@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class PageViewIamge extends StatelessWidget {
+  final List<String> imageurl;
   const PageViewIamge({
     Key? key,
     required this.imageurl,
   }) : super(key: key);
 
-  final List<String>? imageurl;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +17,9 @@ class PageViewIamge extends StatelessWidget {
           child: PageView.builder(
             physics: const BouncingScrollPhysics(),
             controller: PageController(viewportFraction: .9),
-            itemCount: imageurl?.length, //iamgeurl.legth
+            itemCount: imageurl.length, //iamgeurl.legth
             itemBuilder: (context, index) {
-              final imagesUrl = imageurl![index];
+              final imagesUrl = imageurl[index];
               return Container(
                 margin: const EdgeInsets.only(right: 10),
                 decoration: BoxDecoration(
@@ -40,7 +41,7 @@ class PageViewIamge extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
-            imageurl!.length, //imageurl.letg
+            imageurl.length, //imageurl.letg
             (index) => Container(
               margin: const EdgeInsets.symmetric(horizontal: 3),
               color: Colors.black,
