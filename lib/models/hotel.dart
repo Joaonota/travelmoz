@@ -9,6 +9,6 @@ class Hotel {
   Hotel.fromdocument(DocumentSnapshot documentSnapshot) {
     nome = documentSnapshot['nome'];
     cidade = documentSnapshot['cidade'];
-    List<String>.from(documentSnapshot['fotos']);
+    fotos = List<String>.from(documentSnapshot['fotos']);
   }
 }

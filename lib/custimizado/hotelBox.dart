@@ -49,7 +49,6 @@ class _HotelBoxtate extends State<HotelBox> {
               List<DocumentSnapshot> mozs = snapshot.data!.docs.toList();
               DocumentSnapshot documentSnapshot = mozs[index];
               Hotel hotel = Hotel.fromdocument(documentSnapshot);
-
               return Container(
                 margin: const EdgeInsets.only(bottom: 20),
                 padding: const EdgeInsets.all(16),
@@ -71,14 +70,16 @@ class _HotelBoxtate extends State<HotelBox> {
                           style: GoogleFonts.abhayaLibre(
                               color: Colors.black, fontSize: 25)),
                     ),
-                    const Spacer(),
+                    const Spacer(
+                      flex: 10,
+                    ),
                     Center(
                       child: Container(
                         decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 147, 206, 255),
                             borderRadius: BorderRadius.circular(12)),
                         child: TextButton.icon(
-                          icon: const FaIcon(FontAwesomeIcons.tiktok),
+                          icon: const FaIcon(FontAwesomeIcons.liraSign),
                           style: const ButtonStyle(),
                           onPressed: () {
                             /* Navigator.push(
