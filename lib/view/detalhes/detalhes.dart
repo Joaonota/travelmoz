@@ -57,15 +57,18 @@ class _DetalhesState extends State<Detalhes> {
         currentIndex: conrentInt,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.lastfmSquare),
-            label: "CAFÈ",
+            icon: Icon(FontAwesomeIcons.cocktail),
+            label: "LAZER",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.location_on_outlined),
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.hotel),
+            icon: Icon(
+              FontAwesomeIcons.hotel,
+              size: 20,
+            ),
             label: "HOTEL",
           ),
         ],

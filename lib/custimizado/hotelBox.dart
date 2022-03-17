@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/models/moz.dart';
+import 'package:travelmoz/view/Hotel/detalheHotel.dart';
 
 import '../fireBase/firestores.dart';
 import '../models/hotel.dart';
@@ -68,7 +69,7 @@ class _HotelBoxtate extends State<HotelBox> {
                     Center(
                       child: Text("${hotel.nome}",
                           style: GoogleFonts.abhayaLibre(
-                              color: Colors.black, fontSize: 25)),
+                              color: Colors.white, fontSize: 25)),
                     ),
                     const Spacer(
                       flex: 10,
@@ -78,26 +79,25 @@ class _HotelBoxtate extends State<HotelBox> {
                         decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 147, 206, 255),
                             borderRadius: BorderRadius.circular(12)),
-                        child: TextButton.icon(
-                          icon: const FaIcon(FontAwesomeIcons.liraSign),
+                        child: TextButton(
                           style: const ButtonStyle(),
                           onPressed: () {
-                            /* Navigator.push(
+                            Navigator.push(
                               context,
                               PageRouteBuilder(
                                 pageBuilder: (_, animation, __) =>
                                     FadeTransition(
                                   opacity: animation,
-                                  child: Detalhes(
-                                    moz: moz,
+                                  child: DetalheHotel(
+                                    hotel: hotel,
                                     screnHeigh:
                                         MediaQuery.of(context).size.height,
                                   ),
                                 ),
                               ),
-                            );*/
+                            );
                           },
-                          label: const Text("Fazer Reserva"),
+                          child: const Text(" Mais Detalhes"),
                           /*  child: Text(
                             "Fazer Reserva",
                             style: GoogleFonts.abrilFatface(
