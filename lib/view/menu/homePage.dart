@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:travelmoz/custimizado/cityBox.dart';
+import 'package:travelmoz/custimizado/Drawer/drawerCustimizado.dart';
+import 'package:travelmoz/custimizado/cidade/cityBox.dart';
+
 import 'package:travelmoz/teste/teste.dart';
 
 // ignore: must_be_immutable
@@ -27,9 +29,7 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        drawer: const Drawer(
-          
-        ),
+        drawer: drawerCutimizado(),
         body: const CityBox());
   }
 }

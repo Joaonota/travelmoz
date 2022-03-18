@@ -1,14 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:travelmoz/models/hotel.dart';
 
-class Avaliacao extends StatelessWidget {
-  const Avaliacao({
+import '../../models/moz.dart';
+
+class DetalheUser extends StatelessWidget {
+  const DetalheUser({
     Key? key,
-    required this.hotels,
+    required this.mozs,
   }) : super(key: key);
 
-  final Hotel hotels;
+  final Moz mozs;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class Avaliacao extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundImage: CachedNetworkImageProvider(
-              (hotels.fotos[0]),
+              ("${mozs.fotoPM}"),
             ),
           ),
           const SizedBox(
@@ -36,36 +37,21 @@ class Avaliacao extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                "Avalicao do Hotel",
+                "Presidente do municipio",
                 style: TextStyle(color: Colors.black, fontSize: 14),
               ),
               Text(
-                "${hotels.nome}",
+                "${mozs.presidenteM}",
                 style: const TextStyle(
                     color: Colors.grey, fontWeight: FontWeight.bold),
               ),
             ],
           ),
           const Spacer(),
-          /* Container(
-            color: Colors.blue.shade100,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-            ),
-            child: const Text("5.5"),
-          )*/
-          TextButton.icon(
+          IconButton(
             onPressed: () {},
-            style: TextButton.styleFrom(
-                backgroundColor: Colors.blue.shade100,
-                primary: Colors.blue.shade600,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15))),
-            icon: const Icon(
-              Icons.star,
-            ),
-            label: Text(hotels.avaliacao.toString()),
-          ),
+            icon: const Icon(Icons.more_horiz, color: Colors.black),
+          )
         ],
       ),
     );

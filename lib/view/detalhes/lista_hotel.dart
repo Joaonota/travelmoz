@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travelmoz/custimizado/HotelCustimizado/hotelBox.dart';
 import 'package:travelmoz/models/moz.dart';
-
-import '../../custimizado/hotelBox.dart';
 
 // ignore: must_be_immutable
 class Listahotel extends StatelessWidget {

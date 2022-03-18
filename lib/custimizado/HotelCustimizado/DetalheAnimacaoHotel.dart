@@ -3,10 +3,9 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travelmoz/custimizado/HotelCustimizado/avaliacao.dart';
+import 'package:travelmoz/custimizado/cidade/pageviewIamge.dart';
+import 'package:travelmoz/custimizado/cidade/translationAnimation.dart';
 import 'package:travelmoz/models/hotel.dart';
-
-import '../pageviewIamge.dart';
-import '../translationAnimation.dart';
 
 class DetalheAnimacaoHotel extends StatelessWidget {
   const DetalheAnimacaoHotel(
@@ -36,7 +35,7 @@ class DetalheAnimacaoHotel extends StatelessWidget {
                 ),
                 child: Transform.scale(
                   scale: lerpDouble(1, 1.3, bootmPercet)!,
-                  child: PageViewIamge(imageurl: imageurl!),
+                  child: PageViewIamge(imageurl: imageurl),
                 ),
               ),
               Positioned(
@@ -51,7 +50,7 @@ class DetalheAnimacaoHotel extends StatelessWidget {
                     lerpDouble(-30, 140, topPercet)!.clamp(topPercet + 10, 140),
                 left: lerpDouble(60, 20, topPercet)!.clamp(20.0, 50.0),
                 child: Text(
-                  "${hotel.nome}",
+                  hotel.nome,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: lerpDouble(20, 40, topPercet)!,
@@ -92,20 +91,32 @@ class DetalheAnimacaoHotel extends StatelessWidget {
                   label: const Text("10K"),
                 ),
                 const Spacer(),
-                TextButton.icon(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.blue.shade100,
-                    primary: Colors.blue.shade600,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                  icon: const Icon(
-                    Icons.check_circle_outline,
-                  ),
-                  label: const Text("verficado"),
-                ),
+                hotel.verificado == true
+                    ? TextButton.icon(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.blue.shade100,
+                          primary: Colors.blue.shade600,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        icon: const Icon(Icons.quick_contacts_dialer_outlined),
+                        label: const Text("Fazer Reserva"),
+                      )
+                    : TextButton.icon(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 224, 80, 80),
+                          primary: const Color.fromARGB(255, 255, 255, 255),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        icon: const Icon(Icons.cancel),
+                        label: const Text("Não Autorizado"),
+                      )
               ],
             ),
           ),

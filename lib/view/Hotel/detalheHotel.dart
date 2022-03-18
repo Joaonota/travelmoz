@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/custimizado/HotelCustimizado/DetalheAnimacaoHotel.dart';
+import 'package:travelmoz/custimizado/cidade/buildPersist.dart';
 import 'package:travelmoz/models/hotel.dart';
-
-import '../../custimizado/buildPersist.dart';
 
 class DetalheHotel extends StatefulWidget {
   const DetalheHotel({Key? key, required this.hotel, required this.screnHeigh})
@@ -74,7 +73,7 @@ class _DetalheHotelState extends State<DetalheHotel> {
                 ),
                 Text(
                   "${widget.hotel.descricao}",
-                  style: GoogleFonts.actor(),
+                  style: GoogleFonts.oswald(),
                 ),
                 const SizedBox(
                   height: 20,
