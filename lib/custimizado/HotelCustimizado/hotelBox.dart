@@ -65,7 +65,7 @@ class _HotelBoxtate extends State<HotelBox> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Center(
-                      child: Text("${hotel.nome}",
+                      child: Text(hotel.nome,
                           style: GoogleFonts.abhayaLibre(
                               color: Colors.white, fontSize: 25)),
                     ),

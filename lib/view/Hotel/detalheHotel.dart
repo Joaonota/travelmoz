@@ -63,7 +63,7 @@ class _DetalheHotelState extends State<DetalheHotel> {
                       color: Colors.black26,
                     ),
                     Flexible(
-                      child: Text("${widget.hotel.nome}",
+                      child: Text(widget.hotel.nome,
                           style: GoogleFonts.allertaStencil()),
                     )
                   ],

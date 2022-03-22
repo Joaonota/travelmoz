@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:travelmoz/custimizado/buildPersist.dart';
-import 'package:travelmoz/custimizado/detalheAnimacao.dart';
+import 'package:travelmoz/custimizado/cidade/buildPersist.dart';
 import 'package:travelmoz/models/moz.dart';
 import 'package:travelmoz/view/detalhes/lista_hotel.dart';
 
+import '../../custimizado/cidade/detalheAnimacao.dart';
 import 'lista_Laser.dart';
 
 class Detalhes extends StatefulWidget {

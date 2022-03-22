@@ -7,7 +7,7 @@ import 'package:travelmoz/custimizado/cidade/pageviewIamge.dart';
 import 'package:travelmoz/custimizado/cidade/translationAnimation.dart';
 import 'package:travelmoz/models/hotel.dart';
 
-class DetalheAnimacaoHotel extends StatelessWidget {
+class DetalheAnimacaoHotel extends StatefulWidget {
   const DetalheAnimacaoHotel(
       {Key? key,
       required this.hotel,
@@ -19,9 +19,14 @@ class DetalheAnimacaoHotel extends StatelessWidget {
   final double bootmPercet;
 
   @override
+  State<DetalheAnimacaoHotel> createState() => _DetalheAnimacaoHotelState();
+}
+
+class _DetalheAnimacaoHotelState extends State<DetalheAnimacaoHotel> {
+  @override
   Widget build(BuildContext context) {
     final topPadind = MediaQuery.of(context).padding.top;
-    final imageurl = hotel.fotos;
+    final imageurl = widget.hotel.fotos;
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -30,30 +35,30 @@ class DetalheAnimacaoHotel extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                  top: (20 + topPadind) * (1 - bootmPercet),
-                  bottom: 160 * (1 - bootmPercet),
+                  top: (20 + topPadind) * (1 - widget.bootmPercet),
+                  bottom: 160 * (1 - widget.bootmPercet),
                 ),
                 child: Transform.scale(
-                  scale: lerpDouble(1, 1.3, bootmPercet)!,
+                  scale: lerpDouble(1, 1.3, widget.bootmPercet)!,
                   child: PageViewIamge(imageurl: imageurl),
                 ),
               ),
               Positioned(
                 top: topPadind,
-                left: -60 * (1 - bootmPercet),
+                left: -60 * (1 - widget.bootmPercet),
                 child: const BackButton(
                   color: Colors.white,
                 ),
               ),
               Positioned(
-                top:
-                    lerpDouble(-30, 140, topPercet)!.clamp(topPercet + 10, 140),
-                left: lerpDouble(60, 20, topPercet)!.clamp(20.0, 50.0),
+                top: lerpDouble(-30, 140, widget.topPercet)!
+                    .clamp(widget.topPercet + 10, 140),
+                left: lerpDouble(60, 20, widget.topPercet)!.clamp(20.0, 50.0),
                 child: Text(
-                  hotel.nome,
+                  widget.hotel.nome,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: lerpDouble(20, 40, topPercet)!,
+                      fontSize: lerpDouble(20, 40, widget.topPercet)!,
                       fontWeight: FontWeight.bold),
                 ),
               )
@@ -91,7 +96,7 @@ class DetalheAnimacaoHotel extends StatelessWidget {
                   label: const Text("10K"),
                 ),
                 const Spacer(),
-                hotel.verificado == true
+                widget.hotel.verificado == true
                     ? TextButton.icon(
                         onPressed: () {},
                         style: TextButton.styleFrom(
@@ -124,7 +129,7 @@ class DetalheAnimacaoHotel extends StatelessWidget {
         Positioned.fill(
           top: null,
           child: TranslationAnimation(
-              child: Avaliacao(hotels: hotel) //DetalheUser(mozs: mozs),
+              child: Avaliacao(hotels: widget.hotel) //DetalheUser(mozs: mozs),
               ),
         )
       ],
