@@ -1,4 +1,5 @@
 import 'dart:convert' as convert;
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:travelmoz/models/temperatura.dart';
@@ -17,11 +18,16 @@ class _TesteTempState extends State<TesteTemp> {
     final resposta = await http.get(Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?q=Tete,MZ&units=metric&lang=pt%27&appid=ff1ebd1bd18070938c751d8f6c625bbd'));
     if (resposta.statusCode == 200) {
-      final jsonResponse = convert.jsonDecode(resposta.body);
+      // final jsonResponse = convert.jsonDecode(resposta.body);
 //final vvv = Temperatura.fromJson(jsonDecode(resposta.body));
+      //   final lista = jsonResponse['main'];
+      //print("esta lista" + jsonResponse);
+      //return Temperatura.fromJson(jsonDecode(resposta.body));
+
+      final jsonResponse = convert.jsonDecode(resposta.body);
       final lista = jsonResponse['main'];
       print(lista);
-      return lista;
+      return Temperatura.fromJson(lista);
     } else {
       throw Exception('Failed to load album');
     }
@@ -29,7 +35,6 @@ class _TesteTempState extends State<TesteTemp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     futureTemp = tempApi();
   }
@@ -43,7 +48,12 @@ class _TesteTempState extends State<TesteTemp> {
           future: futureTemp,
           builder: (context, snap) {
             if (snap.hasData) {
-              return Text(snap.data!.tempmax.toString());
+              return Column(
+                children: [
+                  Text("${snap.data!.tempmax!.toInt()}"),
+                  Text("${snap.data!.tempmin}"),
+                ],
+              );
             } else if (snap.hasError) {
               return Text('${snap.error}');
             }
