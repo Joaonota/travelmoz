@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/custimizado/cidade/buildPersist.dart';
 import 'package:travelmoz/models/moz.dart';
+import 'package:travelmoz/models/temperatura.dart';
 import 'package:travelmoz/view/detalhes/lista_hotel.dart';
+import 'package:http/http.dart' as http;
 
 import '../../custimizado/cidade/detalheAnimacao.dart';
 import 'lista_Laser.dart';
@@ -29,6 +33,7 @@ class _DetalhesState extends State<Detalhes> {
   void initState() {
     _controller = ScrollController(initialScrollOffset: widget.screnHeigh * .3);
     pc = PageController(initialPage: conrentInt);
+    //consuApi();
     super.initState();
   }
 
@@ -44,6 +49,46 @@ class _DetalhesState extends State<Detalhes> {
       conrentInt = pagina;
     });
   }
+
+  Future<Temperatura> tempApi() async {
+    final resposta = await http.get(Uri.parse(
+        'http://api.openweathermap.org/data/2.5/weather?q=Tete,MZ&units=metric&lang=pt%27&appid=ff1ebd1bd18070938c751d8f6c625bbd'));
+    if (resposta.statusCode == 200) {
+      return Temperatura.fromJson(jsonDecode(resposta.body));
+    } else {
+      throw Exception('Failed to load album');
+    }
+  }
+
+  //
+  /*
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return Album.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load album');
+  }
+}
+
+  Future consuApi() async {
+    final response = await http
+        .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
+    print(response.body);
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      return print(response.body);
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load album');
+    }
+  }*/
+  //
 
   @override
   Widget build(BuildContext context) {

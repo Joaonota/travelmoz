@@ -27,6 +27,7 @@ class _DetalheAnimacaoHotelState extends State<DetalheAnimacaoHotel> {
   Widget build(BuildContext context) {
     final topPadind = MediaQuery.of(context).padding.top;
     final imageurl = widget.hotel.fotos;
+
     return Stack(
       fit: StackFit.expand,
       children: [

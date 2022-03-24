@@ -8,8 +8,6 @@ import 'package:travelmoz/view/detalhes/detalhesCidade.dart';
 
 import '../../fireBase/firestores.dart';
 
-
-
 class CityBox extends StatefulWidget {
   const CityBox({Key? key}) : super(key: key);
 

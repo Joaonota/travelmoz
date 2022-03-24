@@ -18,7 +18,6 @@ class _DetalheHotelState extends State<DetalheHotel> {
   late ScrollController _controller;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _controller = ScrollController(initialScrollOffset: widget.screnHeigh * .3);
   }
@@ -72,7 +71,7 @@ class _DetalheHotelState extends State<DetalheHotel> {
                   height: 10,
                 ),
                 Text(
-                  "${widget.hotel.descricao}",
+                  widget.hotel.descricao,
                   style: GoogleFonts.oswald(),
                 ),
                 const SizedBox(
