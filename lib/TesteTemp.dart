@@ -50,7 +50,7 @@ class _TesteTempState extends State<TesteTemp> {
             if (snap.hasData) {
               return Column(
                 children: [
-                  Text("${snap.data!.tempmax!.toInt()}"),
+                  Text("${snap.data!.tempmax?.toInt()}"),
                   Text("${snap.data!.tempmin}"),
                 ],
               );
