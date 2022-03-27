@@ -1,5 +1,4 @@
 import 'dart:convert' as convert;
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:travelmoz/models/temperatura.dart';
@@ -26,7 +25,8 @@ class _TesteTempState extends State<TesteTemp> {
 
       final jsonResponse = convert.jsonDecode(resposta.body);
       final lista = jsonResponse['main'];
-      print(lista);
+      final lista2 = jsonResponse['weather'];
+      print("ola" + lista);
       return Temperatura.fromJson(lista);
     } else {
       throw Exception('Failed to load album');
@@ -42,6 +42,7 @@ class _TesteTempState extends State<TesteTemp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.yellow,
       appBar: AppBar(),
       body: Center(
         child: FutureBuilder<Temperatura>(
@@ -55,7 +56,7 @@ class _TesteTempState extends State<TesteTemp> {
                 ],
               );
             } else if (snap.hasError) {
-              return Text('${snap.error}');
+              return Text("${snap.hasError}");
             }
             return const CircularProgressIndicator();
           },

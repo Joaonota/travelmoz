@@ -40,7 +40,7 @@ class Avaliacao extends StatelessWidget {
                 style: TextStyle(color: Colors.black, fontSize: 14),
               ),
               Text(
-                "${hotels.nome}",
+                hotels.nome,
                 style: const TextStyle(
                     color: Colors.grey, fontWeight: FontWeight.bold),
               ),
@@ -63,6 +63,7 @@ class Avaliacao extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15))),
             icon: const Icon(
               Icons.star,
+              color: Colors.yellow,
             ),
             label: Text(hotels.avaliacao.toString()),
           ),

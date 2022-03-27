@@ -49,7 +49,7 @@ class _DetalhesState extends State<Detalhes> {
       conrentInt = pagina;
     });
   }
-
+/*
   Future<Temperatura> tempApi() async {
     final resposta = await http.get(Uri.parse(
         'http://api.openweathermap.org/data/2.5/weather?q=Tete,MZ&units=metric&lang=pt%27&appid=ff1ebd1bd18070938c751d8f6c625bbd'));
@@ -59,7 +59,7 @@ class _DetalhesState extends State<Detalhes> {
       throw Exception('Failed to load album');
     }
   }
-
+*/
   //
   /*
 

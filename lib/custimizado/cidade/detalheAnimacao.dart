@@ -1,13 +1,18 @@
+// ignore_for_file: file_names
+
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:travelmoz/api/apiTemperatura/apiTemperatura.dart';
 import 'package:travelmoz/custimizado/cidade/pageviewIamge.dart';
 import 'package:travelmoz/custimizado/cidade/translationAnimation.dart';
 import 'package:travelmoz/models/moz.dart';
+import 'package:travelmoz/models/temperatura.dart';
 
 import 'detalheUser.dart';
 
-class DetalheAnimacao extends StatelessWidget {
+class DetalheAnimacao extends StatefulWidget {
   final Moz mozs;
   final double topPercet;
   final double bootmPercet;
@@ -19,9 +24,23 @@ class DetalheAnimacao extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<DetalheAnimacao> createState() => _DetalheAnimacaoState();
+}
+
+class _DetalheAnimacaoState extends State<DetalheAnimacao> {
+  late Future<Temperatura> futureTemp;
+  ApiTemperatura apiTemperatura = ApiTemperatura();
+
+  @override
+  void initState() {
+    super.initState();
+    futureTemp = apiTemperatura.apiTemp();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final topPadind = MediaQuery.of(context).padding.top;
-    final imageurl = mozs.fotos;
+    final imageurl = widget.mozs.fotos;
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -30,31 +49,108 @@ class DetalheAnimacao extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                  top: (20 + topPadind) * (1 - bootmPercet),
-                  bottom: 160 * (1 - bootmPercet),
+                  top: (20 + topPadind) * (1 - widget.bootmPercet),
+                  bottom: 160 * (1 - widget.bootmPercet),
                 ),
                 child: Transform.scale(
-                  scale: lerpDouble(1, 1.3, bootmPercet)!,
+                  scale: lerpDouble(1, 1.3, widget.bootmPercet)!,
                   child: PageViewIamge(imageurl: imageurl!),
                 ),
               ),
               Positioned(
                 top: topPadind,
-                left: -60 * (1 - bootmPercet),
+                left: -60 * (1 - widget.bootmPercet),
                 child: const BackButton(
                   color: Colors.white,
                 ),
               ),
               Positioned(
-                top:
-                    lerpDouble(-30, 140, topPercet)!.clamp(topPercet + 10, 140),
-                left: lerpDouble(60, 20, topPercet)!.clamp(20.0, 50.0),
-                child: Text(
-                  "${mozs.cidade}",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: lerpDouble(20, 40, topPercet)!,
-                      fontWeight: FontWeight.bold),
+                top: lerpDouble(-30, 140, widget.topPercet)!
+                    .clamp(widget.topPercet + 10, 140),
+                left: lerpDouble(60, 20, widget.topPercet)!.clamp(20.0, 50.0),
+                child: Column(
+                  children: [
+                    Text(
+                      "${widget.mozs.cidade}",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: lerpDouble(20, 40, widget.topPercet)!,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Temperatura Actual",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: lerpDouble(10, 20, widget.topPercet)!,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    /*Column(
+                      children: [
+                        Text(
+                          "max:16",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: lerpDouble(10, 20, widget.topPercet)!,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "Min:16",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: lerpDouble(10, 20, widget.topPercet)!,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),*/
+                    FutureBuilder<Temperatura>(
+                      future: futureTemp,
+                      builder: (context, dados) {
+                        if (dados.hasData) {
+                          return Column(
+                            children: [
+                              dados.data!.tempmax! >= 35
+                                  ? Row(
+                                      children: [
+                                        Text(
+                                          "Min: ${dados.data!.tempmin!.toInt()} ",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: lerpDouble(
+                                                10, 20, widget.topPercet)!,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        const Icon(
+                                          FontAwesomeIcons.temperatureLow,
+                                          color: Colors.redAccent,
+                                        )
+                                      ],
+                                    )
+                                  : Text(
+                                      "Min: ${dados.data!.tempmin!.toInt()}º",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: lerpDouble(
+                                            10, 20, widget.topPercet)!,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                            ],
+                          );
+                        } else if (dados.hasError) {
+                          return Text(
+                            "Erro Ao Carregar a Temperatura",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: lerpDouble(10, 20, widget.topPercet)!,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          );
+                        }
+                        return const Text("Sem dados Para Apresentar");
+                      },
+                    )
+                  ],
                 ),
               )
             ],
@@ -80,7 +176,7 @@ class DetalheAnimacao extends StatelessWidget {
                     CupertinoIcons.heart_circle,
                     color: Colors.red,
                   ),
-                  label: Text("${mozs.likes!.length}"),
+                  label: Text("${widget.mozs.likes!.length}"),
                 ),
                 TextButton.icon(
                   onPressed: () {},
@@ -110,7 +206,7 @@ class DetalheAnimacao extends StatelessWidget {
         Positioned.fill(
           top: null,
           child: TranslationAnimation(
-            child: DetalheUser(mozs: mozs),
+            child: DetalheUser(mozs: widget.mozs),
           ),
         )
       ],
