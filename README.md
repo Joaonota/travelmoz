@@ -1,6 +1,6 @@
-# travelmoz
+# Travelmoz
 
-A new Flutter project
+Um novo projeto Flutter
 
 ## Getting Started
 
