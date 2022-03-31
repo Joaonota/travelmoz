@@ -3,7 +3,6 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travelmoz/api/apiTemperatura/apiTemperatura.dart';
 import 'package:travelmoz/custimizado/cidade/pageviewIamge.dart';
 import 'package:travelmoz/custimizado/cidade/translationAnimation.dart';
@@ -34,7 +33,7 @@ class _DetalheAnimacaoState extends State<DetalheAnimacao> {
   @override
   void initState() {
     super.initState();
-    futureTemp = apiTemperatura.apiTemp();
+    futureTemp = apiTemperatura.apiTemp(widget.mozs.cityTemp);
   }
 
   @override
@@ -108,33 +107,24 @@ class _DetalheAnimacaoState extends State<DetalheAnimacao> {
                         if (dados.hasData) {
                           return Column(
                             children: [
-                              dados.data!.tempmax! >= 35
-                                  ? Row(
-                                      children: [
-                                        Text(
-                                          "Min: ${dados.data!.tempmin!.toInt()} ",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: lerpDouble(
-                                                10, 20, widget.topPercet)!,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        const Icon(
-                                          FontAwesomeIcons.temperatureLow,
-                                          color: Colors.redAccent,
-                                        )
-                                      ],
-                                    )
-                                  : Text(
-                                      "Min: ${dados.data!.tempmin!.toInt()}º",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: lerpDouble(
-                                            10, 20, widget.topPercet)!,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
+                              Text(
+                                "Min: ${dados.data!.tempmin!.toInt()}º",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      lerpDouble(10, 20, widget.topPercet)!,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "Min: ${dados.data!.tempmin!.toInt()}º",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      lerpDouble(10, 20, widget.topPercet)!,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ],
                           );
                         } else if (dados.hasError) {

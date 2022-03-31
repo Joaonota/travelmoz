@@ -1,5 +1,3 @@
-
-
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
@@ -27,7 +25,7 @@ class PageViewIamge extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                    image: imagesUrl == null
+                    image: imagesUrl == ""
                         ? const NetworkImage(
                             "https://img.freepik.com/vetores-gratis/fundo-futurista-de-tecnologia-isometrica_52683-74304.jpg?w=740&t=st=1647686552~exp=1647687152~hmac=758842c64f795617532cc5aae94922ec2111029dea1a007da756aeacae27b722")
                         : NetworkImage(imagesUrl),

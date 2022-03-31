@@ -3,25 +3,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/fireBase/firestores.dart';
-import 'package:travelmoz/models/hotel.dart';
+import 'package:travelmoz/models/lazer.dart';
 import 'package:travelmoz/models/moz.dart';
-import 'package:travelmoz/view/Hotel/detalheHotel.dart';
 
-class HotelBox extends StatefulWidget {
-  const HotelBox({Key? key, required this.moz}) : super(key: key);
+import '../../view/lazer/DetalhesLazer.dart';
+
+class LazerBox extends StatefulWidget {
+  const LazerBox({Key? key, required this.moz}) : super(key: key);
   final Moz moz;
 
   @override
-  State<HotelBox> createState() => _HotelBoxtate();
+  State<LazerBox> createState() => _LazerBoxtate();
 }
 
-class _HotelBoxtate extends State<HotelBox> {
+class _LazerBoxtate extends State<LazerBox> {
   Firestore firestore = Firestore();
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: firestore.queryHotel(widget.moz.cidade),
+      stream: firestore.queryLazer(widget.moz.cidade),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return const Center(
@@ -35,7 +36,7 @@ class _HotelBoxtate extends State<HotelBox> {
         }
         if (!snapshot.hasData) {
           return const Center(
-            child: Text("SEM DADOS ou ESSES DADOS FORAM EXCLUIDOS"),
+            child: Text("SEM DADOS OU ESSES DADOS FORAM EXCLUIDOS"),
           );
         }
 
@@ -47,7 +48,7 @@ class _HotelBoxtate extends State<HotelBox> {
             itemBuilder: (context, index) {
               List<DocumentSnapshot> mozs = snapshot.data!.docs.toList();
               DocumentSnapshot documentSnapshot = mozs[index];
-              Hotel hotel = Hotel.fromdocument(documentSnapshot);
+              Lazer lazer = Lazer.fromDocumentSnapShot(documentSnapshot);
               return Container(
                 margin: const EdgeInsets.only(bottom: 20),
                 padding: const EdgeInsets.all(16),
@@ -55,7 +56,7 @@ class _HotelBoxtate extends State<HotelBox> {
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(12),
                   image: DecorationImage(
-                    image: NetworkImage(hotel.fotos[0]),
+                    image: NetworkImage(lazer.fotos[0]),
                     fit: BoxFit.cover,
                     colorFilter: const ColorFilter.mode(
                         Colors.black26, BlendMode.darken),
@@ -65,7 +66,7 @@ class _HotelBoxtate extends State<HotelBox> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Center(
-                      child: Text(hotel.nome,
+                      child: Text(lazer.nome,
                           style: GoogleFonts.abhayaLibre(
                               color: Colors.white, fontSize: 25)),
                     ),
@@ -86,8 +87,8 @@ class _HotelBoxtate extends State<HotelBox> {
                                 pageBuilder: (_, animation, __) =>
                                     FadeTransition(
                                   opacity: animation,
-                                  child: DetalheHotel(
-                                    hotel: hotel,
+                                  child: DetalhesLazer(
+                                    lazer: lazer,
                                     screnHeigh:
                                         MediaQuery.of(context).size.height,
                                   ),

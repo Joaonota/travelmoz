@@ -6,6 +6,7 @@ class Moz {
   String? fotoPM;
   String? presidenteM;
   String? cityTemp;
+
   List<String>? distritos;
   List<String>? fotos;
   List<String>? linguas;

@@ -77,7 +77,9 @@ class _DetalhesState extends State<Detalhes> {
         controller: pc,
         onPageChanged: onchanged,
         children: [
-          const ListaLaser(),
+          ListaLaser(
+            moz: widget.moz,
+          ),
           CustomScrollView(
             physics: const BouncingScrollPhysics(),
             controller: _controller,
