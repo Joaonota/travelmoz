@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        drawer: drawerCutimizado(),
+        // drawer: drawerCutimizado(),
         body: const CityBox());
   }
 }
