@@ -193,7 +193,7 @@ class _CityBoxState extends State<CityBox> {
                           CupertinoIcons.heart,
                           color: Colors.red,
                         ),
-                        label: const Text("0"))
+                        label: const Text("LIKE"))
                   ],
                 ),
               );

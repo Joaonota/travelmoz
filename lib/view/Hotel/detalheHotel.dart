@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: file_names
+ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/custimizado/HotelCustimizado/DetalheAnimacaoHotel.dart';
 import 'package:travelmoz/custimizado/cidade/buildPersist.dart';

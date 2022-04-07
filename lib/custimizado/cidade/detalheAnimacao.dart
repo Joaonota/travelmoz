@@ -166,7 +166,8 @@ class _DetalheAnimacaoState extends State<DetalheAnimacao> {
                     CupertinoIcons.heart_circle,
                     color: Colors.red,
                   ),
-                  label: Text("${widget.mozs.likes!.length}"),
+                  //label: Text("${widget.mozs.likes!.length}"),
+                  label: const Text("LIKE"),
                 ),
                 TextButton.icon(
                   onPressed: () {},

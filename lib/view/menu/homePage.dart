@@ -1,5 +1,5 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:travelmoz/custimizado/Drawer/drawerCustimizado.dart';
 import 'package:travelmoz/custimizado/cidade/cityBox.dart';
 
 import 'package:travelmoz/teste/teste.dart';

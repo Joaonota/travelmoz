@@ -16,7 +16,6 @@ class ApiTemperatura {
       final response = convert.jsonDecode(resposta.body);
       //final lista = response['main'];
       final main = response['main'];
-      print(main);
 
       /* var tems = [];
       for (var tempx in response['weathe']) {
