@@ -137,7 +137,10 @@ class _DetalheAnimacaoState extends State<DetalheAnimacao> {
                             ),
                           );
                         }
-                        return const Text("Sem dados Para Apresentar");
+                        return const Text(
+                          "Sem dados Para Apresentar",
+                          style: TextStyle(color: Colors.white),
+                        );
                       },
                     )
                   ],

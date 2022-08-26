@@ -5,6 +5,8 @@ class Firestore {
   CollectionReference moz = FirebaseFirestore.instance.collection("moz");
   CollectionReference hotelMoz = FirebaseFirestore.instance.collection("hotel");
   CollectionReference lazerMoz = FirebaseFirestore.instance.collection("lazer");
+  CollectionReference eventoMoz =
+      FirebaseFirestore.instance.collection("evento");
   collection() => moz;
 
   Stream<QuerySnapshot> queryHotel(query) {
@@ -13,5 +15,9 @@ class Firestore {
 
   Stream<QuerySnapshot> queryLazer(query) {
     return lazerMoz.where('cidade', isEqualTo: query).snapshots();
+  }
+
+  Stream<QuerySnapshot> queryevento(query) {
+    return eventoMoz.where('cidade', isEqualTo: query).snapshots();
   }
 }

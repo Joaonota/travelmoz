@@ -112,6 +112,13 @@ class _DetalhesState extends State<Detalhes> {
             ),
             label: "HOTEL",
           ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              FontAwesomeIcons.hotel,
+              size: 20,
+            ),
+            label: "HOTEL",
+          ),
         ],
       ),
       body: PageView(
@@ -175,7 +182,8 @@ class _DetalhesState extends State<Detalhes> {
           ),
           Listahotel(
             moz: widget.moz,
-          )
+          ),
+          
         ],
       ),
     );

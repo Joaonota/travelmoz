@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/custimizado/cidade/buildPersist.dart';
 import 'package:travelmoz/custimizado/cidade/detalheAnimacao.dart';
 import 'package:travelmoz/models/moz.dart';
+import 'package:travelmoz/view/detalhes/lista_eventos.dart';
 import 'package:travelmoz/view/detalhes/lista_hotel.dart';
 
 import 'lista_Laser.dart';
@@ -43,6 +44,7 @@ class _DetalhesState extends State<Detalhes> {
   onchanged(pagina) {
     setState(() {
       conrentInt = pagina;
+      print(pagina);
     });
   }
 
@@ -50,15 +52,21 @@ class _DetalhesState extends State<Detalhes> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         onTap: (pag) {
-          pc.animateToPage(pag,
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.bounceOut);
+          pc.animateToPage(
+            pag,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.bounceOut,
+          );
         },
         currentIndex: conrentInt,
         items: [
           const BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.cocktail),
+            icon: Icon(
+              FontAwesomeIcons.cocktail,
+              size: 20,
+            ),
             label: "LAZER",
           ),
           BottomNavigationBarItem(
@@ -71,6 +79,13 @@ class _DetalhesState extends State<Detalhes> {
               size: 20,
             ),
             label: "HOTEL",
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(
+              FontAwesomeIcons.calendar,
+              size: 20,
+            ),
+            label: "Eventos",
           ),
         ],
       ),
@@ -135,7 +150,10 @@ class _DetalhesState extends State<Detalhes> {
           ),
           Listahotel(
             moz: widget.moz,
-          )
+          ),
+          ListaEvento(
+            moz: widget.moz,
+          ),
         ],
       ),
     );
