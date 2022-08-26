@@ -29,9 +29,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^1.13.1
-  cloud_firestore: ^3.1.10
-  cached_network_image: ^3.2.0
+  firebase_core: ^1.21.1
+  cloud_firestore: ^3.4.6
+  cached_network_image: ^3.2.1
+  #shimmer: ^2.0.0
+  
   google_fonts: ^2.3.1
  # font_awesome: ^5.10.1
   font_awesome_flutter: ^9.2.0
