@@ -71,7 +71,7 @@ class _DetalhesState extends State<Detalhes> {
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.location_on_outlined),
-            label: "${widget.moz.cidade}",
+            label: "${widget.moz.cityTemp}",
           ),
           const BottomNavigationBarItem(
             icon: Icon(
