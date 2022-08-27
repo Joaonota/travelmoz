@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travelmoz/custimizado/HotelCustimizado/DetalheAnimacaoHotel.dart';
 import 'package:travelmoz/custimizado/cidade/buildPersist.dart';
-import 'package:travelmoz/models/eventos.dart';
 import 'package:travelmoz/models/hotel.dart';
 
 class DetalheHotel extends StatefulWidget {

@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:travelmoz/models/eventos.dart';
-import 'package:travelmoz/models/hotel.dart';
 
 class AvaliacaoEventos extends StatelessWidget {
   const AvaliacaoEventos({
@@ -66,7 +65,7 @@ class AvaliacaoEventos extends StatelessWidget {
               Icons.star,
               color: Colors.yellow,
             ),
-            label: Text("2"),
+            label: const Text("LIGAR"),
           ),
         ],
       ),

@@ -44,7 +44,6 @@ class _DetalhesState extends State<Detalhes> {
   onchanged(pagina) {
     setState(() {
       conrentInt = pagina;
-      print(pagina);
     });
   }
 
